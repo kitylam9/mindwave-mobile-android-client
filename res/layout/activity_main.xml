@@ -1,0 +1,186 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin3"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/meditationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/margin"
+        android:text="MDTT"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/meditationStr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/margin"
+        android:minWidth="@dimen/width"
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/attentionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/meditationLabel"
+        android:layout_marginLeft="@dimen/margin"
+        android:text="ATTN"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+    
+    <TextView
+        android:id="@+id/attentionStr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/meditationStr"
+        android:layout_marginRight="@dimen/margin"
+        android:minWidth="@dimen/width"
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/blinkLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/attentionLabel"
+        android:layout_marginLeft="@dimen/margin"
+        android:text="BLNK"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+    
+    <TextView
+        android:id="@+id/blinkStr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/attentionStr"
+        android:layout_marginRight="@dimen/margin"
+        android:minWidth="@dimen/width"
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <ProgressBar
+        android:id="@+id/meditationVal"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/meditationLabel"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginTop="@dimen/margin2"
+        android:layout_toLeftOf="@+id/meditationStr"
+        android:layout_toRightOf="@+id/meditationLabel"
+        android:maxHeight="14dip"
+        android:minHeight="14dip"
+        android:progressDrawable="@drawable/myprogress" />
+
+    <ProgressBar
+        android:id="@+id/attentionVal"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/attentionLabel"
+        android:layout_alignLeft="@+id/meditationVal"
+        android:layout_alignRight="@+id/meditationVal" 
+        android:layout_marginTop="@dimen/margin2"
+        android:progressDrawable="@drawable/myprogress" 
+        android:minHeight="14dip" 
+		android:maxHeight="14dip"/>
+
+    <ProgressBar
+        android:id="@+id/blinkVal"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/attentionVal"
+        android:layout_alignRight="@+id/attentionVal"
+        android:layout_alignTop="@id/blinkLabel"
+        android:layout_marginTop="@dimen/margin2"
+        android:maxHeight="14dip"
+        android:minHeight="14dip"
+        android:progressDrawable="@drawable/myprogress" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/blinkVal"
+        android:layout_marginTop="@dimen/margin"
+        android:text="CONNECT" />
+    
+    <ProgressBar
+        android:id="@+id/signal"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/button"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin" />
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/signal"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:columnCount="2"
+        android:rowCount="1" >
+
+        <ScrollView
+            android:id="@+id/svR"
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            android:layout_column="1"
+            android:layout_gravity="right|top"
+            android:layout_row="0" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/tvR"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </ScrollView>
+
+        <ScrollView
+            android:id="@+id/svL"
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            android:layout_column="0"
+            android:layout_gravity="left|top"
+            android:layout_row="0" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/tvL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </ScrollView>
+
+    </GridLayout>
+
+</RelativeLayout>

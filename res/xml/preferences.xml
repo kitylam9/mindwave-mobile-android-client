@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="SERVER SETTINGS" >
+        <EditTextPreference
+            android:key="apiEndpointURL"
+            android:title="API ENDPOINT URL"
+            android:summary="API endpoint URL where the 'mdtt', 'attn', 'blnk', 'sgnl' and 'msg' parameters will be sent via HTTP POST request."
+            android:defaultValue="@string/api_endpoint_url"
+        />
+    </PreferenceCategory>
+
+</PreferenceScreen>
