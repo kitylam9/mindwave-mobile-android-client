@@ -119,8 +119,6 @@ public class MainActivity extends Activity {
 				}
 			}
 		});
-		
-		new SendDataTask().execute("msg=App Ready");
 	}
 
 	@Override
@@ -138,6 +136,18 @@ public class MainActivity extends Activity {
 				break;
 		}
 		return false;
+	}
+	
+	@Override
+	public void onStart() {
+		new SendDataTask().execute("msg=App Opened");
+		super.onStop();
+	}
+	
+	@Override
+	public void onStop() {
+		new SendDataTask().execute("msg=App Closed");
+		super.onStop();
 	}
 	
 	@Override
@@ -171,28 +181,28 @@ public class MainActivity extends Activity {
 		                case TGDevice.STATE_IDLE:
 		                    break;
 		                case TGDevice.STATE_CONNECTING:		    
-		                	new SendDataTask().execute("msg=Connecting");
-		                	tvL.append("Connecting\n");
+		                	new SendDataTask().execute("msg=Device Connecting");
+		                	tvL.append("Device Connecting\n");
 		                	button.setEnabled(false);
 		                	break;		                    
 		                case TGDevice.STATE_CONNECTED:
-		                	new SendDataTask().execute("msg=Connected");
-		                	tvL.append("Connected\n");
+		                	new SendDataTask().execute("msg=Device Connected");
+		                	tvL.append("Device Connected\n");
 		                	tgDevice.start();
 		                    break;
 		                case TGDevice.STATE_NOT_FOUND:
-		                	new SendDataTask().execute("msg=Not Found");
-		                	tvL.append("Not Found\n");
+		                	new SendDataTask().execute("msg=Device Not Found");
+		                	tvL.append("Device Not Found\n");
 		                	button.setEnabled(true);
 		                	break;
 		                case TGDevice.STATE_NOT_PAIRED:
-		                	new SendDataTask().execute("msg=Not Paired");
-		                	tvL.append("Not Paired\n");
+		                	new SendDataTask().execute("msg=Device Not Paired");
+		                	tvL.append("Device Not Paired\n");
 		                	button.setEnabled(true);
 		                	break;
 		                case TGDevice.STATE_DISCONNECTED:
-		                	new SendDataTask().execute("msg=Disconnected&sgnl=-1");
-		                	tvL.append("Disconnected\n");
+		                	new SendDataTask().execute("msg=Device Disconnected&sgnl=-1");
+		                	tvL.append("Device Disconnected\n");
 		                	button.setEnabled(true);
 		                	reset();
 		                	break;
@@ -241,9 +251,11 @@ public class MainActivity extends Activity {
 	private void connect() {
 		bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 	    if(bluetoothAdapter == null) {
+	    	new SendDataTask().execute("msg=Bluetooth Not Availab");
 	    	tvL.append("Bluetooth Not Available");
 	    } else {
 	    	if(!bluetoothAdapter.isEnabled()) {
+	    		new SendDataTask().execute("msg=Bluetooth Not Enabled");
 	    		tvL.append("Bluetooth Not Enabled\n");
 	    		return;
 	    	}
@@ -284,6 +296,8 @@ public class MainActivity extends Activity {
 		int code = -1;
 		
 		try {
+			query = query.replace(" ", "%20");
+			
 			URL url = new URL(apiEndpointURL + "?" + query);
 			System.out.println(url);
 	        URLConnection connection = url.openConnection();
