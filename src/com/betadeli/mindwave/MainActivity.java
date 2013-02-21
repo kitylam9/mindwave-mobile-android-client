@@ -58,11 +58,11 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-		apiEndpointURL = preferences.getString("apiEndPointURL", this.getString(R.string.api_endpoint_url));
+		apiEndpointURL = preferences.getString("apiEndpointURL", this.getString(R.string.api_endpoint_url));
 		preferences.registerOnSharedPreferenceChangeListener(new OnSharedPreferenceChangeListener() {			
 			@Override
 			public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-				apiEndpointURL = sharedPreferences.getString("apiEndPointURL", apiEndpointURL);
+				apiEndpointURL = sharedPreferences.getString("apiEndpointURL", apiEndpointURL);
 			}
 		});
 		
@@ -119,6 +119,8 @@ public class MainActivity extends Activity {
 				}
 			}
 		});
+		
+		new SendDataTask().execute("msg=App Ready");
 	}
 
 	@Override
